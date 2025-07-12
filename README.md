@@ -19,8 +19,8 @@ HTML5 + CSS (estilo en línea)
 `localStorage` para persistencia
 
 
-🧑‍🎓 Autor
-Jorge Torres 🧠
+Autor
+Jorge Torres 
 
 Proyecto desarrollado para INACAP
 
@@ -31,7 +31,7 @@ Este proyecto guarda datos localmente en el navegador (localStorage), por lo tan
 
 Ideal para demostraciones simples o entregas académicas.
 
-📫 Contacto
+Contacto
 ¿Tienes preguntas o quieres colaborar?
 
 Email: jorgetorresfe79@gmail.com
