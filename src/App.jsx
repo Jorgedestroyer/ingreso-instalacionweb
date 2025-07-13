@@ -58,8 +58,7 @@ export default function App() {
 
   return (
     <div style={{
-      minHeight: '100vh',
-      background: '#f4f4f4',
+      minHeight: '100vh',  
       padding: '20px',
       fontFamily: 'Segoe UI, sans-serif'
     }}>
