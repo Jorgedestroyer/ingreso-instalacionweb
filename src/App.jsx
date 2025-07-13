@@ -11,6 +11,7 @@ export default function App() {
   });
 
   const [fecha, setFecha] = useState('');
+  const [hora, setHora] = useState('');
   const [ingresos, setIngresos] = useState([]);
 
   useEffect(() => {
@@ -27,6 +28,23 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    const actualizarHora = () => {
+      const ahora = new Date();
+      const opciones = {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false,
+        timeZone: 'America/Santiago'
+      };
+      setHora(ahora.toLocaleTimeString('es-CL', opciones));
+    };
+    actualizarHora();
+    const intervalo = setInterval(actualizarHora, 1000);
+    return () => clearInterval(intervalo);
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem('ingresos', JSON.stringify(ingresos));
   }, [ingresos]);
 
@@ -37,7 +55,7 @@ export default function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const nuevoIngreso = { ...form, fecha };
+    const nuevoIngreso = { ...form, fecha,hora };
     setIngresos(prev => [nuevoIngreso, ...prev]);
     setForm({
       rut: '',
@@ -58,7 +76,7 @@ export default function App() {
 
   return (
     <div style={{
-      minHeight: '100vh',  
+      minHeight: '100vh',
       padding: '20px',
       fontFamily: 'Segoe UI, sans-serif'
     }}>
@@ -73,6 +91,10 @@ export default function App() {
         <header style={{ textAlign: 'center', marginBottom: '30px' }}>
           <img src="/ingreso-instalacionweb/logo-inacap.png" alt="Logo INACAP" style={{ height: '60px' }} />
           <h1 style={{ color: '#c8102e', marginTop: '10px' }}>Registro de Ingresos</h1>
+          <div style={{ fontSize: '1.2em', color: '#333', marginTop: '10px' }}>
+            Fecha: {fecha} <br />
+            Hora: {hora}
+          </div>
         </header>
 
         <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '10px', marginBottom: '20px' }}>
@@ -125,6 +147,7 @@ export default function App() {
             <thead style={{ backgroundColor: '#c8102e', color: '#fff' }}>
               <tr>
                 <th>Fecha</th>
+                <th>Hora</th>
                 <th>RUT</th>
                 <th>Nombre</th>
                 <th>Instalación</th>
@@ -137,6 +160,7 @@ export default function App() {
               {ingresos.map((ing, i) => (
                 <tr key={i}>
                   <td>{ing.fecha}</td>
+                  <td>{ing.hora}</td>
                   <td>{ing.rut}</td>
                   <td>{ing.nombre}</td>
                   <td>{ing.instalacion}</td>
