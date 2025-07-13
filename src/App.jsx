@@ -72,7 +72,7 @@ export default function App() {
         boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
       }}>
         <header style={{ textAlign: 'center', marginBottom: '30px' }}>
-          <img src="/logo-inacap.png" alt="Logo INACAP" style={{ height: '60px' }} />
+          <img src="/ingreso-instalacionweb/logo-inacap.png" alt="Logo INACAP" style={{ height: '60px' }} />
           <h1 style={{ color: '#c8102e', marginTop: '10px' }}>Registro de Ingresos</h1>
         </header>
 
@@ -153,6 +153,3 @@ export default function App() {
     </div>
   );
 }
-import './index.css';
-import React from 'react';
-import ReactDOM from 'react-dom/client';    
